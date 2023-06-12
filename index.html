@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Item List</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Item List</h1>
+      <ul class="item-list">
+        <li class="item">
+          <img src="imgs/item1.jpeg" alt="Item 1" />
+          <h2>Item 1</h2>
+          <p>Description of Item 1</p>
+          <input type="number" value="1" />
+          <input type="checkbox" />
+        </li>
+        <li class="item">
+          <img src="imgs/item2.jpeg" alt="Item 2" />
+          <h2>Item 2</h2>
+          <p>Description of Item 2</p>
+          <input type="number" value="1" />
+          <input type="checkbox" />
+        </li>
+        <!-- Add more list items as needed -->
+      </ul>
+    </div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <img id="popup-image" src="/imgs/item1.jpeg" alt="" />
+        <h2 id="popup-heading"></h2>
+        <p id="popup-description"></p>
+        <input type="number" id="popup-number" value="1" />
+        <input type="checkbox" id="popup-boolean" />
+      </div>
+    </div>
+
+    <script>
+      var items = document.getElementsByClassName("item");
+      var popup = document.getElementById("popup");
+      var popupImage = document.getElementById("popup-image");
+      var popupHeading = document.getElementById("popup-heading");
+      var popupDescription = document.getElementById("popup-description");
+      var popupNumber = document.getElementById("popup-number");
+      var popupBoolean = document.getElementById("popup-boolean");
+
+      for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", function () {
+          popupImage.src = this.getElementsByTagName("img")[0].src;
+          popupHeading.textContent =
+            this.getElementsByTagName("h2")[0].textContent;
+          popupDescription.textContent =
+            this.getElementsByTagName("p")[0].textContent;
+          popupNumber.value = this.getElementsByTagName("input")[0].value;
+          popupBoolean.checked = this.getElementsByTagName("input")[1].checked;
+          popup.style.display = "block";
+        });
+      }
+
+      var closeBtn = document.getElementsByClassName("close")[0];
+      closeBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
